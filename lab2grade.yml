@@ -6,15 +6,15 @@
 - hosts: everyone
   gather_facts: false
   tasks:
-  - name: Verify devops user is created
-    shell: "grep devops /etc/passwd | cut -d: -f1"
+  - name: Verify devops1 user is created
+    shell: "grep devops1 /etc/passwd | cut -d: -f1"
     register: output
   - fail:
-      msg: "FAILED: User devops not present"
-    when: output.stdout != "devops"
+      msg: "FAILED: User devops1 not present"
+    when: output.stdout != "devops1"
   - debug:
-      msg: "Success: devops user present"
-    when: output.stdout == "devops"
+      msg: "Success: devops1 user present"
+    when: output.stdout == "devops1"
   - name: Verify /etc/motd has content
     shell: "cat /etc/motd"
     register: motd
